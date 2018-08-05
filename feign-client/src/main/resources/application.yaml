@@ -1,11 +1,8 @@
 spring:
-  application:
-    name: spring-cloud-eureka-feign-client
-server:
-  port: 9001
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka
-  instance:
-    preferIpAddress: true
+  cloud:
+    config:
+      fail-fast: true
+      name: spring-cloud-eureka-feign-client
+      discovery:
+        service-id: config-server
+        enabled: true

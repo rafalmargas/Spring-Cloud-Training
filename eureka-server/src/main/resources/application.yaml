@@ -1,6 +1,6 @@
-server:
-  port: 8761
-eureka:
-  client:
-    registerWithEureka: false
-    fetchRegistry: false
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      name: discovery
+      uri: http://localhost:8888
