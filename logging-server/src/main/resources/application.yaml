@@ -1,0 +1,8 @@
+spring:
+  cloud:
+    config:
+      fail-fast: true
+      name: zipkin
+      discovery:
+        service-id: config-server
+        enabled: true
