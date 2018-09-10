@@ -7,4 +7,5 @@ spring:
     config:
       server:
         git:
-          uri: file://${user.home}/microservices-demo/config-server/config
+          uri: file://${git.uri}/../../config
+git.uri: @build.outputDirectory@
