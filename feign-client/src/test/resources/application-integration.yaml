@@ -1,0 +1,3 @@
+stubrunner:
+  idsToServiceIds:
+    test-api: spring-cloud-eureka-client #maven artifact-id: feign-client-name

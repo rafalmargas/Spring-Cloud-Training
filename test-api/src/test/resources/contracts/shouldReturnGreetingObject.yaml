@@ -1,0 +1,12 @@
+request:
+  method: GET
+  url: /greeting
+  headers:
+    Content-Type: application/json
+response:
+  status: 200
+  body:
+    greeting: "Hello from EurekaClient!"
+    count: 1
+  headers:
+    Content-Type: application/json;charset=UTF-8

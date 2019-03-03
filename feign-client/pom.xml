@@ -33,6 +33,27 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-stub-runner</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!--Since we're using stub-runner we need a way to tell Maven that we're depending on that stub-->
+        <dependency>
+            <groupId>com.margas.rafal</groupId>
+            <artifactId>test-api</artifactId>
+            <classifier>stubs</classifier>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
 </project>

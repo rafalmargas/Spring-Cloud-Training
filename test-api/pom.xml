@@ -14,6 +14,7 @@
         <groupId>com.margas.rafal</groupId>
         <artifactId>microservices-demo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
@@ -29,6 +30,25 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-contract-verifier</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <version>${spring-cloud-contract.version}</version>
+                <configuration>
+                    <baseClassForTests>com.margas.rafal.testapi.controller.BaseContractTest</baseClassForTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

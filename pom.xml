@@ -11,33 +11,46 @@
     <name>microservices-demo</name>
     <description>Demo project for Spring Boot Cloud</description>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.8.RELEASE</version>
-        <relativePath /> <!-- lookup parent from repository -->
-    </parent>
-
     <modules>
         <module>eureka-server</module>
         <module>feign-client</module>
         <module>test-api</module>
+        <module>utils</module>
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Dalston.SR1</spring-cloud.version>
         <it.skip>false</it.skip>
+
+        <!--This is the maximum version for Spring Boot 1.5.X-->
+        <spring-cloud.version>Edgware.SR5</spring-cloud.version>
+        <!--This is strictly connected to spring-cloud-dependencies version, when spring-cloud-dependencies gets updated this needs to as well -->
+        <spring-cloud-contract.version>1.2.6.RELEASE</spring-cloud-contract.version>
+
+        <spring-boot.version>1.5.19.RELEASE</spring-boot.version>
+        <maven-failsafe-plugin.version>2.18.1</maven-failsafe-plugin.version>
+
     </properties>
 
+    <!--Since we're not using spring-boot-starter-parent as a parent, in order to override dependencies versions
+    we need to provide them ABOVE spring-boot-dependencies declaration-->
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
                 <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -49,10 +62,12 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
+                <version>${maven-failsafe-plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
@@ -75,6 +90,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
 
