@@ -14,7 +14,6 @@
         <groupId>com.margas.rafal</groupId>
         <artifactId>microservices-demo</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath /> <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
@@ -44,17 +43,8 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
                 <extensions>true</extensions>
-                <version>${spring-cloud-contract.version}</version>
                 <configuration>
                     <baseClassForTests>com.margas.rafal.testapi.controller.BaseContractTest</baseClassForTests>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>8</source>
-                    <target>8</target>
                 </configuration>
             </plugin>
         </plugins>
